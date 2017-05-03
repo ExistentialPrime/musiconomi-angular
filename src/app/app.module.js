@@ -19,6 +19,7 @@ var dashboard_component_1 = require("./dashboard.component");
 var coins_component_1 = require("./coins.component");
 var coin_detail_component_1 = require("./coin-detail.component");
 var coin_service_1 = require("./coin.service");
+var pay_with_fiat_component_1 = require("./pay-with-fiat.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -36,6 +37,7 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             dashboard_component_1.DashboardComponent,
+            pay_with_fiat_component_1.PayWithFiatComponent,
             coin_detail_component_1.CoinDetailComponent,
             coins_component_1.CoinsComponent
         ],
