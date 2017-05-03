@@ -1,0 +1,22 @@
+<h2>My Coins</h2>
+<div>
+  <label>Coin name:</label> <input #coinName />
+  <button (click)="add(coinName.value); coinName.value=''">
+    Add
+  </button>
+</div>
+<ul class="coins">
+  <li *ngFor="let coin of coins" (click)="onSelect(coin)"
+      [class.selected]="coin === selectedCoin">
+    <span class="badge">{{coin.id}}</span>
+    <span>{{coin.name}}</span>
+    <button class="delete"
+      (click)="delete(coin); $event.stopPropagation()">x</button>
+  </li>
+</ul>
+<div *ngIf="selectedCoin">
+  <h2>
+    {{selectedCoin.name | uppercase}} is my coin
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

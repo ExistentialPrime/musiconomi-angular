@@ -1,0 +1,19 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var InMemoryDataService = (function () {
+    function InMemoryDataService() {
+    }
+    InMemoryDataService.prototype.createDb = function () {
+        var coins = [
+            { id: 11, name: 'Ethereal' },
+            { id: 12, name: 'Bitecoin' },
+            { id: 13, name: 'Golemy' },
+            { id: 14, name: 'Nosys' },
+            { id: 15, name: 'HeavyCoin' }
+        ];
+        return { coins: coins }; // creates an in-memory table called 'coins' with a route called 'api/coins'
+    };
+    return InMemoryDataService;
+}());
+exports.InMemoryDataService = InMemoryDataService;
+//# sourceMappingURL=in-memory-data.service.js.map

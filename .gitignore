@@ -1,0 +1,2 @@
+#Ignore all NPM dependencies
+node_modules

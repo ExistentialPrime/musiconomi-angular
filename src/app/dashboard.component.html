@@ -1,0 +1,6 @@
+<h3>Top Coins</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let coin of coins"  [routerLink]="['/detail', coin.id]"  class="col-1-4">
+      <button class='btn btn-primary'>{{coin.name}}</button>
+  </a>
+</div>
