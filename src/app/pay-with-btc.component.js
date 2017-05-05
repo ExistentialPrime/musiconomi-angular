@@ -14,14 +14,31 @@ var PayWithBtcComponent = (function () {
     // Constructor
     function PayWithBtcComponent() {
     }
+    Object.defineProperty(PayWithBtcComponent.prototype, "selectedAmount", {
+        get: function () { return this._selectedAmount; },
+        set: function (val) {
+            this._selectedAmount = val;
+            this.selectAmount();
+        },
+        enumerable: true,
+        configurable: true
+    });
     // Init
     PayWithBtcComponent.prototype.ngOnInit = function () {
+        this.selectedAmount = "1000"; // Set initial selection to '1000'
+        this.isManualAmountEnabled = false; // Turn off manual coin amount entry until OTHER is selected
     };
-    // Custom functions
-    PayWithBtcComponent.prototype.clearPaypalFields = function () {
-        this.paypalEmail = "";
-        this.paypalAmount = 0;
-        this.paypalCost = 0;
+    // Amount radio button selection handling (fired after the this.selectedAmount variable is bound, so we can use it)
+    PayWithBtcComponent.prototype.selectAmount = function () {
+        // If OTHER is selected, unlock the ToRecieve box for manual editing
+        if (this.selectedAmount == "other") {
+            this.mcToReceive = 10000;
+            this.isManualAmountEnabled = true;
+        }
+        else {
+            this.mcToReceive = parseFloat(this.selectedAmount);
+            this.isManualAmountEnabled = false;
+        }
     };
     return PayWithBtcComponent;
 }());

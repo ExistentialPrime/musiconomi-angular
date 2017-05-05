@@ -1,5 +1,5 @@
 <!-- Pay with Paypal -->
-<h3 style="text-align: center;"><i class="fa fa-btc"></i> Pay With Bitcoin</h3>
+<h3 style="padding-left: 20px;"><i class="fa fa-btc"></i> Pay With Bitcoin</h3>
 
 <div class="row" style="padding-top: 10px;">
     <div class="col-9" style="border-right: 1px solid #999;">
@@ -11,14 +11,24 @@
             <div class="form-group row">
                 <label class="col-2 control-label" for="presetAmounts">Select an Amount to Purchase</label>
                 <div class="col-8 inputGroupContainer">
-                    <div class="input-group" ><label><input type="radio" name="test1" value="1000" checked> 1,000 MC</label></div>
-                    <div class="input-group" ><label><input type="radio" name="test2" value="2000"> 2,000 MC</label></div>
-                    <div class="input-group" ><label><input type="radio" name="test3" value="5000"> 5,000 MC</label></div>
-                    <div class="input-group" ><label><input type="radio" name="other" value="other"> Other</label>
-                       <input placeholder="0" class="form-control" type="text" style="margin-left: 15px;">
-                    </div>
+                    <div class="input-group" ><label><input type="radio" name="amt1" value="1000" [(ngModel)]="selectedAmount" > 1,000 MC</label></div>
+                    <div class="input-group" ><label><input type="radio" name="amt2" value="2000" [(ngModel)]="selectedAmount" > 2,000 MC</label></div>
+                    <div class="input-group" ><label><input type="radio" name="amt3" value="5000" [(ngModel)]="selectedAmount" > 5,000 MC</label></div>
+                    <div class="input-group" ><label><input type="radio" name="amtother" value="other" [(ngModel)]="selectedAmount" > Other</label></div>
                 </div>
                 <div class="col-2"></div>
+            </div>
+
+            <!-- Amount (Number of $MUSIC to purchase) -->
+            <div class="form-group row">
+                <label class="col-2 control-label" for="amountToPurchase">Receive</label>
+                <div class="col-8 inputGroupContainer">
+                    <div class="input-group" >
+                        <span class="input-group-addon"><i class="fa fa-medium" data-toggle="tooltip" data-placement="top" title="Amount of MC"></i></span>
+                        <input placeholder="1000" class="form-control" type="text" [(ngModel)]="mcToReceive" name="amountToPurchase" [disabled]="!isManualAmountEnabled" required>
+                    </div>
+                </div>
+                <div class="col-2">($MUSIC)</div>
             </div>
             
 
@@ -32,19 +42,6 @@
                     </div>
                 </div>
                 <div class="col-2">(BTC)</div>
-            </div>
-
-
-            <!-- Amount (Number of $MUSIC to purchase) -->
-            <div class="form-group row">
-                <label class="col-2 control-label" for="amountToPurchase">Receive</label>
-                <div class="col-8 inputGroupContainer">
-                    <div class="input-group" >
-                        <span class="input-group-addon"><i class="fa fa-medium" data-toggle="tooltip" data-placement="top" title="Amount of MC"></i></span>
-                        <input placeholder="1000" class="form-control" type="text" [(ngModel)]="musicoinToPurchase" name="amountToPurchase" required>
-                    </div>
-                </div>
-                <div class="col-2">($MUSIC)</div>
             </div>
 
         </form>
