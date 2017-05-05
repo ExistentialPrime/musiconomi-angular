@@ -1,18 +1,24 @@
 <!-- Site Header -->
-<div class="siteTitle" style="float: left;">
-    <a href='/'>
-        <img src="../assets/img/musicoinlogo.png" alt="Musicoin" title="Musicoin" width="150px" style="vertical-align: bottom;">
-        <span style="padding-left: 5px; font-size: 22px; font-weight: bold; font-style: italic; vertical-align: bottom;">Cointek</span>
-    </a>
+<div style="position: relative;">
+    <div class="siteTitle" style="float: left;">
+        <a href='/'>
+            <img src="../assets/img/musicoinlogo.png" alt="Musicoin" title="Musicoin" width="150px" style="vertical-align: bottom;">
+            <span style="padding-left: 5px; font-size: 22px; font-weight: bold; font-style: italic; vertical-align: bottom;">Cointek</span>
+        </a>
+    </div>
+    <nav style="float: left; padding-left: 35px;">
+        <button class="btn btn-outline-warning" routerLink="/pay-with-btc" routerLinkActive="active"><i class="fa fa-btc"></i> Pay with Bitcoin</button>
+        <button class="btn btn-outline-warning" routerLink="/coins" routerLinkActive="active"><i class="fa fa-random"></i> Pay with Ethereum</button>
+        <button class="btn btn-outline-warning" routerLink="/pay-with-fiat" routerLinkActive="active"><i class="fa fa-credit-card"></i> Pay with Fiat</button>
+    </nav>
+
+    <div style="position: absolute; top: 0px; right: 5px;">
+        <button class="btn btn-success"><i class="fa fa-user"></i> Login</button>
+    </div>
 </div>
-<nav style="float: left; padding-left: 35px;">
-    <button class="btn btn-outline-warning" routerLink="/pay-with-fiat" routerLinkActive="active"><i class="fa fa-credit-card"></i> Pay with Fiat</button>
-    <button class="btn btn-outline-warning" routerLink="/dashboard" routerLinkActive="active"><i class="fa fa-btc"></i> Pay with Bitcoin</button>
-    <button class="btn btn-outline-warning" routerLink="/coins" routerLinkActive="active"><i class="fa fa-random"></i> Pay with Shapeshift</button>
-</nav>
 
 <!-- Content components will render here in the router-outlet -->
-<div style="clear: both; height: 10px;"></div>
-<div style="padding-top: 10px; border-top: 1px solid #999;" class="container">
+<div style="clear: both; height: 15px;"></div>
+<div style="padding-top: 15px; border-top: 1px solid #999;" class="container">
     <router-outlet></router-outlet>
 </div>

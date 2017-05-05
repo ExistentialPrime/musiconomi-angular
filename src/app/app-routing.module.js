@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var dashboard_component_1 = require("./dashboard.component");
+var pay_with_btc_component_1 = require("./pay-with-btc.component");
 var pay_with_fiat_component_1 = require("./pay-with-fiat.component");
 var coins_component_1 = require("./coins.component");
 var coin_detail_component_1 = require("./coin-detail.component");
 var routes = [
-    { path: '', redirectTo: '/pay-with-fiat', pathMatch: 'full' },
-    { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
+    { path: '', redirectTo: '/pay-with-btc', pathMatch: 'full' },
+    { path: 'pay-with-btc', component: pay_with_btc_component_1.PayWithBtcComponent },
     { path: 'pay-with-fiat', component: pay_with_fiat_component_1.PayWithFiatComponent },
     { path: 'detail/:id', component: coin_detail_component_1.CoinDetailComponent },
     { path: 'coins', component: coins_component_1.CoinsComponent }

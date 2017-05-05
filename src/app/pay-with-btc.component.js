@@ -10,25 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var coin_service_1 = require("./coin.service");
-var DashboardComponent = (function () {
-    function DashboardComponent(coinService) {
-        this.coinService = coinService;
-        this.coins = [];
+var PayWithBtcComponent = (function () {
+    // Constructor
+    function PayWithBtcComponent() {
     }
-    DashboardComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        // do service stuff on init
-        this.coinService.getCoins().then(function (coinsReturned) { return _this.coins = coinsReturned.slice(1, 4); }); // only grab the first 3 coins
+    // Init
+    PayWithBtcComponent.prototype.ngOnInit = function () {
     };
-    return DashboardComponent;
+    // Custom functions
+    PayWithBtcComponent.prototype.clearPaypalFields = function () {
+        this.paypalEmail = "";
+        this.paypalAmount = 0;
+        this.paypalCost = 0;
+    };
+    return PayWithBtcComponent;
 }());
-DashboardComponent = __decorate([
+PayWithBtcComponent = __decorate([
     core_1.Component({
-        selector: 'my-dashboard',
-        templateUrl: './dashboard.component.html'
+        selector: 'pay-with-btc',
+        templateUrl: './pay-with-btc.component.html'
     }),
-    __metadata("design:paramtypes", [coin_service_1.CoinService])
-], DashboardComponent);
-exports.DashboardComponent = DashboardComponent;
-//# sourceMappingURL=dashboard.component.js.map
+    __metadata("design:paramtypes", [])
+], PayWithBtcComponent);
+exports.PayWithBtcComponent = PayWithBtcComponent;
+//# sourceMappingURL=pay-with-btc.component.js.map

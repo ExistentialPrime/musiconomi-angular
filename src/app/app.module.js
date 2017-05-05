@@ -15,7 +15,7 @@ var app_routing_module_1 = require("./app-routing.module");
 var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
 var in_memory_data_service_1 = require("./in-memory-data.service");
 var app_component_1 = require("./app.component");
-var dashboard_component_1 = require("./dashboard.component");
+var pay_with_btc_component_1 = require("./pay-with-btc.component");
 var coins_component_1 = require("./coins.component");
 var coin_detail_component_1 = require("./coin-detail.component");
 var coin_service_1 = require("./coin.service");
@@ -36,7 +36,7 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
-            dashboard_component_1.DashboardComponent,
+            pay_with_btc_component_1.PayWithBtcComponent,
             pay_with_fiat_component_1.PayWithFiatComponent,
             coin_detail_component_1.CoinDetailComponent,
             coins_component_1.CoinsComponent

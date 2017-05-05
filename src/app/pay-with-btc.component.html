@@ -1,0 +1,86 @@
+<!-- Pay with Paypal -->
+<h3 style="text-align: center;"><i class="fa fa-btc"></i> Pay With Bitcoin</h3>
+
+<div class="row" style="padding-top: 10px;">
+    <div class="col-9" style="border-right: 1px solid #999;">
+
+        <form>
+
+
+            <!-- MC Pre-set selections -->
+            <div class="form-group row">
+                <label class="col-2 control-label" for="presetAmounts">Select an Amount to Purchase</label>
+                <div class="col-8 inputGroupContainer">
+                    <div class="input-group" ><label><input type="radio" name="test1" value="1000" checked> 1,000 MC</label></div>
+                    <div class="input-group" ><label><input type="radio" name="test2" value="2000"> 2,000 MC</label></div>
+                    <div class="input-group" ><label><input type="radio" name="test3" value="5000"> 5,000 MC</label></div>
+                    <div class="input-group" ><label><input type="radio" name="other" value="other"> Other</label>
+                       <input placeholder="0" class="form-control" type="text" style="margin-left: 15px;">
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+            
+
+            <!-- Estimated Cost -->
+            <div class="form-group row">
+                <label class="col-2 control-label" for="costPP">BTC Cost</label>
+                <div class="col-8 inputGroupContainer">
+                    <div class="input-group" >
+                        <span class="input-group-addon"><i class="fa fa-btc" data-toggle="tooltip" data-placement="top" title="Cost in BTC"></i></span>
+                        <input placeholder="0.010" class="form-control" type="text" [(ngModel)]="paypalCost" name="costPP" required>
+                    </div>
+                </div>
+                <div class="col-2">(BTC)</div>
+            </div>
+
+
+            <!-- Amount (Number of $MUSIC to purchase) -->
+            <div class="form-group row">
+                <label class="col-2 control-label" for="amountToPurchase">Receive</label>
+                <div class="col-8 inputGroupContainer">
+                    <div class="input-group" >
+                        <span class="input-group-addon"><i class="fa fa-medium" data-toggle="tooltip" data-placement="top" title="Amount of MC"></i></span>
+                        <input placeholder="1000" class="form-control" type="text" [(ngModel)]="musicoinToPurchase" name="amountToPurchase" required>
+                    </div>
+                </div>
+                <div class="col-2">($MUSIC)</div>
+            </div>
+
+        </form>
+        
+        <!-- Destination Address -->
+        <div style="text-align: center; margin-top: 20px;">
+            <h5>Send BTC to the following Address:</h5>
+            <div style="padding: 10px; border: 1px solid #999; border-radius: 5px; width: 360px; margin: auto;">1KxmAWMRLeBKo8d8zSVxWGNih6oRv2JRq9 </div>
+        </div>
+
+        <!-- Current BTC Conversion Rate -->
+        <div style="text-align: center; margin: 30px auto 0px auto;">
+            <h4>Current conversion rates:</h4>
+            <div style="padding: 10px; border: 1px solid #999; border-radius: 5px; width: 260px; margin: auto;">1 MC = 0.00000498 BTC</div>
+            <div style="padding: 10px; border: 1px solid #999; border-radius: 5px; width: 260px; margin: auto;">1 BTC = 31,254.17 MC</div>
+            <div style="text-align: center; font-size: 10px; margin-top: 15px;">* Last updated 18:43 UTC via CoinMarketCap</div>
+        </div>
+
+        
+    </div>
+
+    <div class="col-3">
+        <h4>Payment Info</h4>
+        <p style="font-size: 11px;">This tool allows you to use Bitcoin to purchase $MUSIC and satiate all of your music cravings on the Musicoin platform!</p>
+        <p style="font-size: 11px;"><strong>Disclaimer:</strong> 
+          By using this service you give explicit consent that Musicoin or its affiliates can not be held responsible for any errors in the entry of destination addresses by the user which may result in the loss of currency sent.
+        </p>
+
+        <p ><strong>Transaction History</strong>
+        <span style="font-size: 12px; color: #336699;">
+          9f703f64ecd11941239442...<br/>
+          9f703f64ecd11941239442...<br/>
+          9f703f64ecd11941239442...<br/>
+          9f703f64ecd11941239442...<br/>
+        </span>
+        </p>
+    </div>            
+
+</div>
