@@ -20,6 +20,7 @@ var coins_component_1 = require("./coins.component");
 var coin_detail_component_1 = require("./coin-detail.component");
 var coin_service_1 = require("./coin.service");
 var pay_with_fiat_component_1 = require("./pay-with-fiat.component");
+var transaction_component_1 = require("./transaction.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,7 +40,8 @@ AppModule = __decorate([
             pay_with_btc_component_1.PayWithBtcComponent,
             pay_with_fiat_component_1.PayWithFiatComponent,
             coin_detail_component_1.CoinDetailComponent,
-            coins_component_1.CoinsComponent
+            coins_component_1.CoinsComponent,
+            transaction_component_1.TransactionDetailComponent
         ],
         providers: [coin_service_1.CoinService],
         bootstrap: [app_component_1.AppComponent]

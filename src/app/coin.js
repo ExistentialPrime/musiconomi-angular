@@ -6,4 +6,4 @@ var Coin = (function () {
     return Coin;
 }());
 exports.Coin = Coin;
-//# sourceMappingURL=coin.js.map
+//# sourceMappingURL=Coin.js.map

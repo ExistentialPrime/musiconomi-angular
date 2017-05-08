@@ -1,0 +1,31 @@
+<!-- Transaction Details-->
+<h3 style="padding-left: 20px;"><i class="fa fa-credit-card"></i> Transaction Details</h3>
+
+<div class="row" style="padding-top: 10px;">
+    <div class="col-9" style="border-right: 1px solid #999;">
+
+        <h1>{{transaction.id}} - {{transaction.txId}} - {{tx.mcPurchased}}</h1>
+
+
+        <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+        
+    </div>
+
+    <div class="col-3">
+
+        <h4>Pending Transactions</h4>
+        <ul class="transaction-links">
+          <li>10,000 MC - 9f703f64ecd11941239442...</li>
+        </ul>
+
+        <h4>Transaction History</h4>
+        <ul class="transaction-links">
+          <li>5,000 MC - 9f703f64ecd11941239442...</li>
+          <li>1,000 MC - 9f703f64ecd11941239442...</li>
+          <li>10,000 MC - 9f703f64ecd11941239442...</li>
+          <li>2,000 MC - 9f703f64ecd11941239442...</li>
+        </ul>
+
+    </div>            
+
+</div>

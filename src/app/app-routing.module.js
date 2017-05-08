@@ -11,12 +11,12 @@ var router_1 = require("@angular/router");
 var pay_with_btc_component_1 = require("./pay-with-btc.component");
 var pay_with_fiat_component_1 = require("./pay-with-fiat.component");
 var coins_component_1 = require("./coins.component");
-var coin_detail_component_1 = require("./coin-detail.component");
+var transaction_component_1 = require("./transaction.component");
 var routes = [
     { path: '', redirectTo: '/pay-with-btc', pathMatch: 'full' },
     { path: 'pay-with-btc', component: pay_with_btc_component_1.PayWithBtcComponent },
     { path: 'pay-with-fiat', component: pay_with_fiat_component_1.PayWithFiatComponent },
-    { path: 'detail/:id', component: coin_detail_component_1.CoinDetailComponent },
+    { path: 'transaction/:id', component: transaction_component_1.TransactionDetailComponent },
     { path: 'coins', component: coins_component_1.CoinsComponent }
 ];
 var AppRoutingModule = (function () {

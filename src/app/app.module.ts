@@ -15,6 +15,7 @@ import { CoinsComponent }       from './coins.component';
 import { CoinDetailComponent }  from './coin-detail.component';
 import { CoinService }          from './coin.service';
 import { PayWithFiatComponent }   from './pay-with-fiat.component';
+import { TransactionDetailComponent }   from './transaction.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { PayWithFiatComponent }   from './pay-with-fiat.component';
     PayWithBtcComponent,
     PayWithFiatComponent,
     CoinDetailComponent,
-    CoinsComponent
+    CoinsComponent,
+    TransactionDetailComponent
   ],
   providers: [ CoinService ],
   bootstrap: [ AppComponent ]

@@ -17,7 +17,55 @@ var CoinService = (function () {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.CoinsUrl = 'api/coins'; // URL to web api
+        this.TransactionUrl = 'api/transactions';
     }
+    /* Currency price fetching */
+    /* ------------------------------------------------ */
+    // Get the current price of BTC in USD
+    CoinService.prototype.fetchCurrentBTCPrice = function () {
+        return this.http.get('api/btcPrice')
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
+    };
+    CoinService.prototype.fetchCurrentBTCPriceSlowly = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // Simulate server latency with 1.0 second delay
+            setTimeout(function () { return resolve(_this.fetchCurrentBTCPrice()); }, 1000);
+        });
+    };
+    // Get the current price of Musicoin (in bitcoin)
+    CoinService.prototype.fetchCurrentMCPrice = function () {
+        return this.http.get('api/mcPrice')
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
+    };
+    CoinService.prototype.fetchCurrentMCPriceSlowly = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            // Simulate server latency with 2 second delay
+            setTimeout(function () { return resolve(_this.fetchCurrentMCPrice()); }, 2000);
+        });
+    };
+    /* Transaction Services */
+    /* ------------------------------------------------ */
+    CoinService.prototype.getAllTransactions = function (userID) {
+        return this.http.get(this.TransactionUrl) // + userID')
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
+    };
+    CoinService.prototype.getTransaction = function (id) {
+        var url = this.TransactionUrl + "/" + id;
+        return this.http.get(url)
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
+    };
+    /* Example 'Coin' API calls  from Tutorial - REMOVE THIS!!!*/
+    /* --------------------------------------------------- */
     CoinService.prototype.getCoins = function () {
         return this.http.get(this.CoinsUrl)
             .toPromise()
@@ -53,12 +101,14 @@ var CoinService = (function () {
             .then(function () { return Coin; })
             .catch(this.handleError);
     };
+    /* Utility functions */
+    /* ------------------------------------------------------- */
     CoinService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
     return CoinService;
-}());
+}()); // End class
 CoinService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])

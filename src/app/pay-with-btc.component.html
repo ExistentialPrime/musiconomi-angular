@@ -1,4 +1,4 @@
-<!-- Pay with Paypal -->
+<!-- Pay with Bitcoin -->
 <h3 style="padding-left: 20px;"><i class="fa fa-btc"></i> Pay With Bitcoin</h3>
 
 <div class="row" style="padding-top: 10px;">
@@ -9,7 +9,7 @@
 
             <!-- MC Pre-set selections -->
             <div class="form-group row">
-                <label class="col-2 control-label" for="presetAmounts">Select an Amount to Purchase</label>
+                <label class="col-2 control-label" for="presetAmounts">Amount to Purchase</label>
                 <div class="col-8 inputGroupContainer">
                     <div class="input-group" ><label><input type="radio" name="amt1" value="1000" [(ngModel)]="selectedAmount" > 1,000 MC</label></div>
                     <div class="input-group" ><label><input type="radio" name="amt2" value="2000" [(ngModel)]="selectedAmount" > 2,000 MC</label></div>
@@ -25,7 +25,7 @@
                 <div class="col-8 inputGroupContainer">
                     <div class="input-group" >
                         <span class="input-group-addon"><i class="fa fa-medium" data-toggle="tooltip" data-placement="top" title="Amount of MC"></i></span>
-                        <input placeholder="1000" class="form-control" type="text" [(ngModel)]="mcToReceive" name="amountToPurchase" [disabled]="!isManualAmountEnabled" required>
+                        <input placeholder="1000" class="form-control" type="text" [(ngModel)]="mcToReceive" name="amountToPurchase" [disabled]="!isManualAmountEnabled" (ngModelChange)="calculateCost()" required>
                     </div>
                 </div>
                 <div class="col-2">($MUSIC)</div>
@@ -34,11 +34,11 @@
 
             <!-- Estimated Cost -->
             <div class="form-group row">
-                <label class="col-2 control-label" for="costPP">BTC Cost</label>
+                <label class="col-2 control-label" for="costBtc">BTC Cost</label>
                 <div class="col-8 inputGroupContainer">
                     <div class="input-group" >
                         <span class="input-group-addon"><i class="fa fa-btc" data-toggle="tooltip" data-placement="top" title="Cost in BTC"></i></span>
-                        <input placeholder="0.010" class="form-control" type="text" [(ngModel)]="paypalCost" name="costPP" required>
+                        <input placeholder="0.010" class="form-control" type="text" [(ngModel)]="btcCost" name="costBtc" required disabled>
                     </div>
                 </div>
                 <div class="col-2">(BTC)</div>
@@ -55,8 +55,14 @@
         <!-- Current BTC Conversion Rate -->
         <div style="text-align: center; margin: 30px auto 0px auto;">
             <h4>Current conversion rates:</h4>
-            <div style="padding: 10px; border: 1px solid #999; border-radius: 5px; width: 260px; margin: auto;">1 MC = 0.00000498 BTC</div>
-            <div style="padding: 10px; border: 1px solid #999; border-radius: 5px; width: 260px; margin: auto;">1 BTC = 31,254.17 MC</div>
+            <div style="padding: 10px; border: 1px solid #999; border-radius: 5px; width: 260px; margin: auto;">
+                <span *ngIf="mcPriceBtc">1 MC = {{mcPriceBtc}} BTC</span>
+                <span *ngIf="!mcPriceBtc"><img src="../assets/img/loading-spinner-grey.gif" alt="fetching" title="Fetching"> Fetching...</span>
+            </div>
+            <div style="padding: 10px; border: 1px solid #999; border-radius: 5px; width: 260px; margin: auto;">
+                <span *ngIf="btcPriceUsd">1 BTC = ${{btcPriceUsd}} USD</span>
+                <span *ngIf="!btcPriceUsd"><img src="../assets/img/loading-spinner-grey.gif" alt="fetching" title="Fetching"> Fetching...</span>
+            </div>
             <div style="text-align: center; font-size: 10px; margin-top: 15px;">* Last updated 18:43 UTC via CoinMarketCap</div>
         </div>
 
@@ -70,14 +76,18 @@
           By using this service you give explicit consent that Musicoin or its affiliates can not be held responsible for any errors in the entry of destination addresses by the user which may result in the loss of currency sent.
         </p>
 
-        <p ><strong>Transaction History</strong>
-        <span style="font-size: 12px; color: #336699;">
-          9f703f64ecd11941239442...<br/>
-          9f703f64ecd11941239442...<br/>
-          9f703f64ecd11941239442...<br/>
-          9f703f64ecd11941239442...<br/>
-        </span>
-        </p>
+        <div class="transaction-links-title"><i class="fa fa-clock-o"></i> Pending Transactions</div>
+        <ul class="transaction-links" >
+            <ng-container *ngFor="let tx of pendingTransactions">
+                <li (click)="gotoTxDetail(tx.id)" style="cursor: pointer;">{{tx.mcPurchased}} MC ({{tx.dateInitiated  | date:'shortDate'}})</li>
+            </ng-container>
+        </ul>
+
+        <div class="transaction-links-title"><i class="fa fa-history"></i> Transaction History</div>
+        <ul class="transaction-links" >
+          <li *ngFor="let tx of previousTransactions">{{tx.mcPurchased}} MC ({{tx.dateInitiated  | date:'shortDate'}})</li>
+        </ul>
+
     </div>            
 
 </div>
