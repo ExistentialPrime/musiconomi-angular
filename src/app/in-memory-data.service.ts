@@ -15,7 +15,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
     let btcPrice = 1569.93; // creates an in-memory table called 'btcPrice' with a route called 'api/btcPrice'
 
-    let mcPrice = 0.00000369 // creates an in-memory table called 'mcPrice' with a route called 'api/mcPrice'
+    let mcPrice = 0.00000369; // creates an in-memory table called 'mcPrice' with a route called 'api/mcPrice'
 
     let transactions = [
       {id: 1009, txId: 'e89792dc69dd3a04472d5c6a1e41666c5d7675ae7836e8dba2d40e70199f53fc', dateInitiated: new Date("2017-05-08T22:00:00Z"), mcPurchased: 8000, btcSent: 0.02952, mcPriceBtc: 0.00000369, btcAddress: '1D9KSxezUn2YktFBHGbsy9L8r4xhNbZvvs', status: 'Pending' },

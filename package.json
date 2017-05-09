@@ -3,24 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "description": "Cointek by Musicoin",
+  "main": "gulpfile.babel.js",
   "scripts": {
-    "test:once": "karma start karma.conf.js --single-run",
-    "build": "tsc -p src/",
-    "serve": "lite-server -c=bs-config.json",
-    "prestart": "npm run build",
-    "start": "concurrently \"npm run build:watch\" \"npm run serve\"",
-    "pretest": "npm run build",
-    "test": "concurrently \"npm run build:watch\" \"karma start karma.conf.js\"",
-    "pretest:once": "npm run build",
-    "build:watch": "tsc -p src/ -w",
-    "build:upgrade": "tsc",
-    "serve:upgrade": "http-server",
-    "build:aot": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js",
-    "serve:aot": "lite-server -c bs-config.aot.json",
-    "build:babel": "babel src -d src --extensions \".es6\" --source-maps",
-    "copy-dist-files": "node ./copy-dist-files.js",
-    "i18n": "ng-xi18n",
-    "lint": "tslint ./src/**/*.ts -t verbose"
+    "clean": "gulp clean",
+    "compile": "gulp compile",
+    "build": "gulp build",
+    "start": "concurrent --kill-others \"gulp watch\" \"lite-server\""
   },
   "keywords": [],
   "author": "CryptoPete",
@@ -41,6 +29,7 @@
     "@angular/upgrade": "~4.0.0",
     "angular-in-memory-web-api": "~0.3.1",
     "core-js": "^2.4.1",
+    "jquery": "2.2.4",
     "rxjs": "5.0.1",
     "systemjs": "0.19.39",
     "zone.js": "^0.8.4"
@@ -60,13 +49,27 @@
     "babel-preset-es2015": "^6.16.0",
     "canonical-path": "0.0.2",
     "concurrently": "^3.0.0",
-    "grunt": "~0.4.4",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-nodeunit": "~0.3.3",
-    "grunt-contrib-uglify": "~0.4.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-cli": "^1.2.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-extname": "^0.2.0",
+    "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.2.1",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-sass-lint": "^1.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tslint": "^8.0.0",
+    "gulp-typescript": "^3.1.6",
+    "gulp-uglify": "^1.2.0",
+    "gulp-uncss": "^1.0.1",
     "http-server": "^0.9.0",
     "jasmine": "~2.4.1",
     "jasmine-core": "~2.4.1",
+    "js-yaml": "^3.4.6",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-cli": "^1.0.1",
@@ -77,13 +80,25 @@
     "lodash": "^4.16.2",
     "phantomjs-prebuilt": "^2.1.7",
     "protractor": "~4.0.14",
+    "rimraf": "^2.5.2",
     "rollup": "^0.41.6",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "2.0.0",
     "rollup-plugin-uglify": "^1.0.1",
     "source-map-explorer": "^1.3.2",
-    "tslint": "^3.15.1",
-    "typescript": "~2.2.0"
+    "svg-injector": "^1.1.3",
+    "systemjs-builder": "^0.16.4",
+    "tslint": "^5.2.0",
+    "typescript": "~2.2.0",
+    "yargs": "^3.8.0"
   },
-  "repository": {}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Musicoin/cointek/cointek.git"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
 }

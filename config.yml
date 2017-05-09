@@ -1,0 +1,19 @@
+PATHS:
+# Paths for COPYING node_modules stuff to deployable libs folder
+  libsOut: "dist/libs"
+  libsIn:
+    - "src/systemjs.config.js"
+    - 'node_modules/core-js/client/shim.min.js'
+    - 'node_modules/systemjs/dist/system-polyfills.js'
+    - 'node_modules/systemjs/dist/system.src.js'
+    - 'node_modules/reflect-metadata/Reflect.js'
+    - 'node_modules/zone.js/dist/zone.min.js'
+    - "node_modules/@angular/common/bundles/common.umd.min.js"
+    - "node_modules/@angular/compiler/bundles/compiler.umd.min.js"
+    - "node_modules/@angular/core/bundles/core.umd.min.js"
+    - "node_modules/@angular/forms/bundles/forms.umd.min.js"
+    - "node_modules/@angular/http/bundles/http.umd.min.js"
+    - "node_modules/@angular/platform-browser/bundles/platform-browser.umd.min.js"
+    - "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.min.js"
+    - "node_modules/@angular/platform-server/bundles/platform-server.umd.min.js"
+    - "node_modules/@angular/router/bundles/router.umd.min.js"

@@ -1,2 +1,6 @@
 #Ignore all NPM dependencies
 node_modules
+npm-debug.log
+
+#Ignore built files for serving (these will get built during automated deployment)
+dist

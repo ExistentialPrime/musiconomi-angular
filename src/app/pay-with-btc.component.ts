@@ -10,7 +10,7 @@ import { Transaction } from './transaction';
   templateUrl: './pay-with-btc.component.html'
 })
 export class PayWithBtcComponent implements OnInit {
-  
+
    // Properties
   btcPaymentAddress: string;        // The BTC address the user should send funds to
   mcToReceive: number;              // The amount of Musicoin the user will receive from this purchase
@@ -25,7 +25,7 @@ export class PayWithBtcComponent implements OnInit {
   set selectedAmount(val: any) {     // Handle the onchange events
       this._selectedAmount = val;
       this.selectAmount();
-      this.calculateCost();//this.btcCost = Math.round( this.mcToReceive * this.mcPriceBtc * 1000000) / 10000000; // round t o7 decimal places
+      this.calculateCost();
   }
   get selectedAmount(): any { return this._selectedAmount; }
   
@@ -56,10 +56,8 @@ export class PayWithBtcComponent implements OnInit {
 
   // Amount radio button selection handling (fired after the this.selectedAmount variable is bound, so we can use it)
   selectAmount() {
-    // If OTHER is selected, unlock the ToRecieve box for manual editing
-    if (this.selectedAmount == "other") { this.mcToReceive = 10000; this.isManualAmountEnabled = true; }
-    // Else just set to the value selected
-    else { this.mcToReceive = parseFloat(this.selectedAmount); this.isManualAmountEnabled = false; } 
+    if (this.selectedAmount === "other") { this.mcToReceive = 10000; this.isManualAmountEnabled = true; } // If OTHER is selected, unlock the ToRecieve box for manual editing
+    else { this.mcToReceive = parseFloat(this.selectedAmount); this.isManualAmountEnabled = false; } // Else just set to the value selected
   }
 
   calculateCost() {

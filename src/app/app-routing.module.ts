@@ -9,7 +9,7 @@ import { TransactionDetailComponent }  from './transaction.component';
 const routes: Routes = [
   { path: '', redirectTo: '/pay-with-btc', pathMatch: 'full' },
   { path: 'pay-with-btc',  component: PayWithBtcComponent },
-  { path: 'pay-with-fiat',  component: PayWithFiatComponent }, 
+  { path: 'pay-with-fiat',  component: PayWithFiatComponent },
   { path: 'transaction/:id', component: TransactionDetailComponent },
   { path: 'coins',     component: CoinsComponent }
 ];

@@ -11,7 +11,7 @@ export class CoinService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private CoinsUrl = 'api/coins';  // URL to web api
-  private TransactionUrl = 'api/transactions'
+  private TransactionUrl = 'api/transactions';
 
   constructor(private http: Http) { }
 
@@ -26,7 +26,7 @@ export class CoinService {
                .catch(this.handleError);
   }
   fetchCurrentBTCPriceSlowly(): Promise<number> {
-      return new Promise(resolve => { 
+      return new Promise(resolve => {
         // Simulate server latency with 1.0 second delay
         setTimeout(() => resolve(this.fetchCurrentBTCPrice()), 1000);
       });
