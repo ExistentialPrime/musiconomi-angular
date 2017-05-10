@@ -1,7 +1,7 @@
 NOTE: 5/9/17 - Rebuilding the build and deploy framework with Gulp. The project will not build and run until I finish the integration. Should be done soon. 
 
 TODO: Finish Gulp (compile TS not working)
-TODO: Update Readme
+TODO: Update Readme!
 
 
 1. Clone Repository to local
