@@ -54,13 +54,13 @@ gulp.task('tslint', () => {
 /**
  * Compile TypeScript sources and create sourcemaps in 'dist'directory.
  */
-gulp.task("compile", gulp.series("tslint"), () => {
-    let tsResult = gulp.src("src/**/*.ts")
+gulp.task("compile", function () {
+    return gulp.src("src/**/*.ts")
         .pipe(sourcemaps.init())
-        .pipe(tsc(tsProject));
-    return tsResult.js
-        .pipe(sourcemaps.write(".", {sourceRoot: '/src'}))
-        .pipe(gulp.dest("dist"));
+        //.pipe(tsc(tsProject))
+        .pipe(tsProject())
+        .pipe(sourcemaps.write(".")) //, {sourceRoot: '/src'}))
+        .pipe(gulp.dest(PATHS.dist));
 });
 
 /**
@@ -68,7 +68,7 @@ gulp.task("compile", gulp.series("tslint"), () => {
  */
 gulp.task("resources", () => {
     return gulp.src(["src/**/*", "!**/*.ts"])
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest(PATHS.dist));
 });
 
 

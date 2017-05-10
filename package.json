@@ -11,7 +11,7 @@
     "start": "concurrent --kill-others \"gulp watch\" \"lite-server\""
   },
   "keywords": [],
-  "author": "CryptoPete",
+  "author": "CryptoPete <thecryptopete@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@angular/animations" : "~4.0.0",

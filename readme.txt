@@ -1,15 +1,28 @@
-NOTE: 5/9/17 - Rebuilding the build and deploy framework with Gulp. The project will not build and run until I finish the integration. Should be done soon. 
+=============================================
+Musicoin Cointek
+Author: CryptoPete (thecryptopete@gmail.com)
+=============================================
 
-TODO: Finish Gulp (compile TS not working)
-TODO: Update Readme!
-
-
+Development Environment Setup
+---------------------------------------------
 1. Clone Repository to local
 
-2. Make sure Node.js and NPM are installed
+2. Make sure Node.js 7.x, NPM 4.x, and Bower 1.8.x are installed  
 
-3. Install dependencies
+3. Get dependencies
  - Navigate to the root of the project and run 'npm install'
+ - Navigate to the root of the project and run 'bower install'
 
-4. Start the project 
+4. Build the project 
+ - Navigate to the root of the project and run 'npm run build'
+
+5. Run the project 
  - Navigate to the root of the project and run 'npm start'
+
+
+Production Server Requirements (Commands for Ubuntu): 
+----------------------------------------------------------------
+ - Apache2 (if not installed run 'sudo apt install apache2' - config is up to you)
+ - Node.js 7.x (if not installed run 'curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash - ' then 'sudo apt-get install -y nodejs')
+ - NPM 4.x (if not installed run 'sudo apt-get install npm')
+ - Bower 1.8.x (if not installed run 'npm install -g bower')

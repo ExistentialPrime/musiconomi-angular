@@ -1,6 +1,7 @@
-#Ignore all NPM dependencies
+#Ignore all NPM and Bower dependencies
 node_modules
 npm-debug.log
+bower_components
 
 #Ignore built files for serving (these will get built during automated deployment)
 dist

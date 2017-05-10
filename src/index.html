@@ -5,7 +5,8 @@
     <title>Cointek Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css" asp-append-version="true"> <!-- TODO: start using SASS soon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.css" /> <!-- TODO: pull this in local when starting to use SASS -->
 
     <!-- Bootstrap and Styles (also for use with ng-bootstrap) -->
     <!-- Can also reference locally by running 'npm install bootstrap@4.0.0-alpha.6 - - save' -->
@@ -16,7 +17,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <!-- Polyfills -->
+    <!-- Vendor scripts (needs to be loaded before Angular and System.js scripts)-->
+    <script src="libs/sweetalert2.min.js"></script>
+
+    <!-- Angular Polyfills -->
     <script src="libs/shim.min.js"></script>
     <script src="libs/system-polyfills.js"></script> <!-- Required for IE compatibility -->
     <script src="libs/zone.min.js"></script>
