@@ -66,6 +66,7 @@ export class PayWithBtcComponent implements OnInit {
 
    populateTransactions(allTxs: Transaction[]) {
      this.pendingTransactions = allTxs;
+     this.previousTransactions = allTxs;
    }
 
   gotoTxDetail(internalId: string): void {
