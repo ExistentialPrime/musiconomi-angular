@@ -1,10 +1,26 @@
 <!-- Transaction Details-->
-<h3 style="padding-left: 20px;"><i class="fa fa-credit-card"></i> Transaction Details</h3>
-
 <div class="row" style="padding-top: 10px;">
     <div class="col-9" style="border-right: 1px solid #999;">
 
-        <h1>{{transaction.id}} - {{transaction.txId}} - {{tx.mcPurchased}}</h1>
+    
+
+    <div class="table-header row">Transaction Information</div>
+    <div *ngIf='transaction' class="transaction-table row">        
+        <div class="table-label col-4">Internal ID:</div><div class="table-data col-8">{{transaction.id}}</div>
+        <div class="table-label col-4">TxHash:</div><div class="table-data col-8">{{transaction.txId}}</div>
+        <div class="table-label col-4">From (BTC Address):</div><div class="table-data col-8">{{transaction.btcAddress}}</div>
+        <div class="table-label col-4">To (MC Address):</div><div class="table-data col-8">{{transaction.mcAddress}}</div>
+        <div class="table-label col-4">Bitcoin Sent:</div><div class="table-data col-8">{{transaction.btcSent}}</div>
+        <div class="table-label col-4">Musicoin Purchased:</div><div class="table-data col-8">{{transaction.mcPurchased}}</div>
+        <div class="table-label col-4">Price per MC:</div><div class="table-data col-8">{{transaction.mcPriceBtc}}</div>
+        <div class="table-label col-4">Initiated:</div><div class="table-data col-8">{{transaction.dateInitiated | date:'medium'}}</div>
+        <div class="table-label col-4">Confirmed:</div><div class="table-data col-8">{{transaction.dateConfirmed | date:'medium'}}</div>
+        <div class="table-label col-4">Status:</div><div class="table-data col-8">{{transaction.status}}</div>
+    </div>
+    <div *ngIf='!transaction' class="transaction-table row">
+        <h3 style="color: #777; padding: 10px;"><img src="../assets/img/loading-spinner-grey.gif" alt="searching" title="searching"> Searching for Transaction...</h3>
+    </div>
+        
 
 
         <button class="btn btn-primary" (click)="goBack()">Go Back</button>
@@ -13,17 +29,18 @@
 
     <div class="col-3">
 
-        <h4>Pending Transactions</h4>
-        <ul class="transaction-links">
-          <li>10,000 MC - 9f703f64ecd11941239442...</li>
+        <div class="transaction-links-title"><i class="fa fa-clock-o"></i> Pending Transactions</div>
+        <ul class="transaction-links" >
+            <ng-container *ngFor="let tx of pendingTransactions">
+                <li (click)="gotoTxDetail(tx.id)" style="cursor: pointer;">{{tx.mcPurchased}} MC ({{tx.dateInitiated  | date:'shortDate'}})</li>
+            </ng-container>
         </ul>
 
-        <h4>Transaction History</h4>
-        <ul class="transaction-links">
-          <li>5,000 MC - 9f703f64ecd11941239442...</li>
-          <li>1,000 MC - 9f703f64ecd11941239442...</li>
-          <li>10,000 MC - 9f703f64ecd11941239442...</li>
-          <li>2,000 MC - 9f703f64ecd11941239442...</li>
+        <div class="transaction-links-title"><i class="fa fa-history"></i> Transaction History</div>
+        <ul class="transaction-links" >
+            <ng-container *ngFor="let tx of previousTransactions">
+                <li (click)="gotoTxDetail(tx.id)" style="cursor: pointer;">{{tx.mcPurchased}} MC ({{tx.dateInitiated  | date:'shortDate'}})</li>
+            </ng-container>
         </ul>
 
     </div>            

@@ -85,7 +85,9 @@
 
         <div class="transaction-links-title"><i class="fa fa-history"></i> Transaction History</div>
         <ul class="transaction-links" >
-          <li *ngFor="let tx of previousTransactions">{{tx.mcPurchased}} MC ({{tx.dateInitiated  | date:'shortDate'}})</li>
+            <ng-container *ngFor="let tx of previousTransactions">
+                <li (click)="gotoTxDetail(tx.id)" style="cursor: pointer;">{{tx.mcPurchased}} MC ({{tx.dateInitiated  | date:'shortDate'}})</li>
+            </ng-container>
         </ul>
 
     </div>            

@@ -65,8 +65,11 @@ export class PayWithBtcComponent implements OnInit {
    }
 
    populateTransactions(allTxs: Transaction[]) {
-     this.pendingTransactions = allTxs;
-     this.previousTransactions = allTxs;
+     //this.pendingTransactions = allTxs;
+     //this.previousTransactions = allTxs;
+
+     this.pendingTransactions = allTxs.filter(function (tx) {  return tx.status === 'Pending';});
+     this.previousTransactions  = allTxs.filter(function (tx) {  return tx.status != 'Pending';});
    }
 
   gotoTxDetail(internalId: string): void {

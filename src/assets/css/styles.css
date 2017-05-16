@@ -58,3 +58,10 @@ a, button {
   font-size: 12px; 
   color: #336699;
 }
+
+
+/* Transaction Details Table */
+.table-header { border: 1px solid lightblue; font-size: 16px; background-color: #e2f5ff; margin: 10px 0px 0px 0px; padding: 10px; }
+.transaction-table { border: 1px solid lightblue; padding: 10px; margin: 0px 5px 15px 0px; }
+.table-label { font-size: 12px; padding: 5px 5px 5px 10px; }
+.table-data { font-size: 12px; padding: 5px 5px 5px 10px; }
