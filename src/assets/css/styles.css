@@ -1,7 +1,7 @@
 /* Master Styles */
 body { 
   font-family: Arial, Helvetica, sans-serif;
-  width: 1000px;
+  max-width: 1000px;
   border: 1px solid #aaa;
   border-radius: 10px;
   padding: 10px;
@@ -65,3 +65,12 @@ a, button {
 .transaction-table { border: 1px solid lightblue; padding: 10px; margin: 0px 5px 15px 0px; }
 .table-label { font-size: 12px; padding: 5px 5px 5px 10px; }
 .table-data { font-size: 12px; padding: 5px 5px 5px 10px; }
+
+/* Disable text Selection (ie. for Musicoin destination address which is read only and for display only) */
+.unselectable {
+  -webkit-touch-callout:none;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}

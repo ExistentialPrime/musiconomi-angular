@@ -5,6 +5,8 @@ import { CoinService } from './coin.service';
 
 import { Transaction } from './transaction';
 
+declare var swal: any;
+
 @Component({
   selector: 'pay-with-btc',
   templateUrl: './pay-with-btc.component.html'
@@ -19,6 +21,7 @@ export class PayWithBtcComponent implements OnInit {
   btcPriceUsd: number;              // Current price of BTC in USD
   mcPriceBtc: number;               // current price of MC in BTC
   mcPriceUsd: number;               // Current price of MC in USD
+  mcTargetAddress: string;          // Destination address where the Musicoin will be sent
   
   // Custgom on-change handler for 'selectedAmount' to handle calculations every time it changes
   _selectedAmount: any;              // Currently selected amount (radio button group)
@@ -33,7 +36,7 @@ export class PayWithBtcComponent implements OnInit {
   previousTransactions: Transaction[];
 
 
-  // Constructor
+  // Constructor (dependency injection only)
   constructor(
     private coinService: CoinService,
     private router: Router
@@ -52,6 +55,9 @@ export class PayWithBtcComponent implements OnInit {
 
     // Get Transactions for display on left side (look into making this a global component)
     this.coinService.getAllTransactions("userId=12345").then(rslt => this.populateTransactions(rslt));
+
+    this.mcTargetAddress = '0xbe6564eb3becd561762823598da5ce29e4587638'; // Hard code this in for now, but eventually grab it from url query string
+    this.btcPaymentAddress = '1ELkoAyuBRyFFuUM4bas3qPZiVu5W5b3TG'; // Hard code this in for now, but eventually grab it from API call to Blockchain.info
   }
 
   // Amount radio button selection handling (fired after the this.selectedAmount variable is bound, so we can use it)
@@ -65,9 +71,6 @@ export class PayWithBtcComponent implements OnInit {
    }
 
    populateTransactions(allTxs: Transaction[]) {
-     //this.pendingTransactions = allTxs;
-     //this.previousTransactions = allTxs;
-
      this.pendingTransactions = allTxs.filter(function (tx) {  return tx.status === 'Pending';});
      this.previousTransactions  = allTxs.filter(function (tx) {  return tx.status != 'Pending';});
    }
@@ -75,5 +78,34 @@ export class PayWithBtcComponent implements OnInit {
   gotoTxDetail(internalId: string): void {
     this.router.navigate(['/transaction', internalId]);
   }
+
+  copyBtcAddress() {
+
+    let selBox = document.createElement('textarea');
+
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = this.btcPaymentAddress;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+
+    try {
+      let successful = document.execCommand('copy');
+      if (successful)
+        swal('Copy Success','The BTC address was successfuly copied to your clipboard', 'success');
+      else
+        swal('Copy Failed','Copying the BTC address failed. Please highlight it and copy it manually with CTRL + C', 'error');
+    } catch (err) {
+      swal('Oops', 'Unable to copy', 'error');
+    }
+    finally {
+      document.body.removeChild(selBox);
+    }
+
+  }
+
 
 }

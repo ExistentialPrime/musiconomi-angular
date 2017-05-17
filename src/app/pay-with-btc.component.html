@@ -5,52 +5,56 @@
     <div class="col-9" style="border-right: 1px solid #999;">
 
         <form>
+            <div class="row">
 
-
-            <!-- MC Pre-set selections -->
-            <div class="form-group row">
-                <label class="col-2 control-label" for="presetAmounts">Amount to Purchase</label>
-                <div class="col-8 inputGroupContainer">
-                    <div class="input-group" ><label><input type="radio" name="amt1" value="1000" [(ngModel)]="selectedAmount" > 1,000 MC</label></div>
-                    <div class="input-group" ><label><input type="radio" name="amt2" value="2000" [(ngModel)]="selectedAmount" > 2,000 MC</label></div>
-                    <div class="input-group" ><label><input type="radio" name="amt3" value="5000" [(ngModel)]="selectedAmount" > 5,000 MC</label></div>
-                    <div class="input-group" ><label><input type="radio" name="amtother" value="other" [(ngModel)]="selectedAmount" > Other</label></div>
-                </div>
-                <div class="col-2"></div>
-            </div>
-
-            <!-- Amount (Number of $MUSIC to purchase) -->
-            <div class="form-group row">
-                <label class="col-2 control-label" for="amountToPurchase">Receive</label>
-                <div class="col-8 inputGroupContainer">
-                    <div class="input-group" >
-                        <span class="input-group-addon"><i class="fa fa-medium" data-toggle="tooltip" data-placement="top" title="Amount of MC"></i></span>
-                        <input placeholder="1000" class="form-control" type="text" [(ngModel)]="mcToReceive" name="amountToPurchase" [disabled]="!isManualAmountEnabled" (ngModelChange)="calculateCost()" required>
+                <!-- MC Pre-set selections -->
+                <div class="form-group col-6 row">
+                    <label class="col-4 control-label" for="presetAmounts">Amount to Purchase</label>
+                    <div class="col-8 inputGroupContainer">
+                        <div class="input-group" ><label><input type="radio" name="amt1" value="1000" [(ngModel)]="selectedAmount" > 1,000 MC</label></div>
+                        <div class="input-group" ><label><input type="radio" name="amt2" value="2000" [(ngModel)]="selectedAmount" > 2,000 MC</label></div>
+                        <div class="input-group" ><label><input type="radio" name="amt3" value="5000" [(ngModel)]="selectedAmount" > 5,000 MC</label></div>
+                        <div class="input-group" ><label><input type="radio" name="amtother" value="other" [(ngModel)]="selectedAmount" > Other</label></div>
                     </div>
                 </div>
-                <div class="col-2">($MUSIC)</div>
-            </div>
             
 
-            <!-- Estimated Cost -->
-            <div class="form-group row">
-                <label class="col-2 control-label" for="costBtc">BTC Cost</label>
-                <div class="col-8 inputGroupContainer">
-                    <div class="input-group" >
-                        <span class="input-group-addon"><i class="fa fa-btc" data-toggle="tooltip" data-placement="top" title="Cost in BTC"></i></span>
-                        <input placeholder="0.010" class="form-control" type="text" [(ngModel)]="btcCost" name="costBtc" required disabled>
+                <div class="col-6 row">
+                    <!-- Amount (Number of $MUSIC to purchase) -->
+                    <div class="form-group row">
+                        <label class="col-2 control-label" for="amountToPurchase">Receive</label>
+                        <div class="col-8 inputGroupContainer">
+                            <div class="input-group" >
+                                <span class="input-group-addon"><i class="fa fa-medium" data-toggle="tooltip" data-placement="top" title="Amount of MC"></i></span>
+                                <input placeholder="1000" class="form-control" type="text" [(ngModel)]="mcToReceive" name="amountToPurchase" [disabled]="!isManualAmountEnabled" (ngModelChange)="calculateCost()" required>
+                            </div>
+                        </div>
+                        <div class="col-2">($MUSIC)</div>
                     </div>
-                </div>
-                <div class="col-2">(BTC)</div>
-            </div>
+                    
 
-        </form>
-        
-        <!-- Destination Address -->
-        <div style="text-align: center; margin-top: 20px;">
-            <h5>Send BTC to the following Address:</h5>
-            <div style="padding: 10px; border: 1px solid #999; border-radius: 5px; width: 360px; margin: auto;">1KxmAWMRLeBKo8d8zSVxWGNih6oRv2JRq9 </div>
+                    <!-- Estimated Cost -->
+                    <div class="form-group row">
+                        <label class="col-2 control-label" for="costBtc">Cost</label>
+                        <div class="col-8 inputGroupContainer">
+                            <div class="input-group" >
+                                <span class="input-group-addon"><i class="fa fa-btc" data-toggle="tooltip" data-placement="top" title="Cost in BTC"></i></span>
+                                <input placeholder="0.010" class="form-control" type="text" [(ngModel)]="btcCost" name="costBtc" required disabled>
+                            </div>
+                        </div>
+                        <div class="col-2">(BTC)</div>
+                    </div>
+
+                </div>
+            </div>
+        </form>        
+
+        <!-- BTC Payment Address -->
+        <div class="table-header row" style="margin: 20px 10px 0 0; font-weight: bold;">Send <span style="color: #226622; padding: 0 5px 0 5px;">{{btcCost}}</span> BTC to the following Address:</div>
+        <div class="transaction-table row" style="margin: 0 10px 0 0; font-size: 16px;"> 
+            {{btcPaymentAddress}} <i class="fa fa-clipboard" style="margin-left: 15px; padding-top: 5px; cursor: pointer;" (click)="copyBtcAddress()"></i>
         </div>
+
 
         <!-- Current BTC Conversion Rate -->
         <div style="text-align: center; margin: 30px auto 0px auto;">
@@ -89,6 +93,10 @@
                 <li (click)="gotoTxDetail(tx.id)" style="cursor: pointer;">{{tx.mcPurchased}} MC ({{tx.dateInitiated  | date:'shortDate'}})</li>
             </ng-container>
         </ul>
+
+        <!-- MC account (read only) -->
+        <div class="transaction-links-title"><i class="fa fa-medium"></i> Musicoin Address:</div>
+        <div class="unselectable" style="font-size: 10px;">{{mcTargetAddress}}</div>
 
     </div>            
 
