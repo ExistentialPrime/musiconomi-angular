@@ -67,7 +67,7 @@ gulp.task("compile", function () {
  * Copy all resources that are not TypeScript files into dist directory.
  */
 gulp.task("resources", () => {
-    return gulp.src(["src/**/*", "!**/*.ts"])
+    return gulp.src(["src/**/*", "src/.htaccess", "!**/*.ts"])
         .pipe(gulp.dest(PATHS.dist));
 });
 
