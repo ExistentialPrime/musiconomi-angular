@@ -1,6 +1,8 @@
 =============================================
 Musicoin Cointek
 Author: CryptoPete (thecryptopete@gmail.com)
+
+Cointek is an open-source endeaver to build a platform to allow people without crypto-skills to purchase Musicoin without having to go through the hassle of signing up for exchanges and messing with wallets. We want to provide a simple place for them to quickly and easily buy Musicoin with fiat and have it automatically sent to their Musicoin.org account for consumption.
 =============================================
 
 Development Environment Setup
