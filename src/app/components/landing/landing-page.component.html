@@ -1,0 +1,75 @@
+<!-- 
+<h3 style="padding-left: 20px;"><i class="fa fa-list"></i> Landing Page</h3>
+<hr>
+-->
+
+<div>
+    <h4>Track List (API call to AWS ElasticBeanstalk)</h4>
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Audio Url</th>
+            <th>Image Url</th>
+            <th></th>
+        </tr>
+        <tr *ngIf="!trackList"><td>Fetching All Tracks...</td></tr>
+      <ng-container *ngIf="trackList">    
+        <tr *ngFor="let track of trackList">
+            <td>{{track.id}}</td>
+            <td>{{track.title}}</td>
+            <td>{{track.audioUrl}}</td>
+            <td>{{track.imageUrl}}</td>
+            <td><button class="btn btn-secondary" (click)="streamTrack(track.id)"><i class="fa fa-play"></i> Play</button></td>
+        </tr>
+      </ng-container>
+    </table>
+</div>
+
+
+<div class="row">
+    <div class="col-3"><h4>Now Playing:</h4></div>
+    <div class="col-2"><p style="font-weight: bold;"><span *ngIf='selectedTrack'>{{selectedTrack.title}}</span><span *ngIf='!selectedTrack'>None</span></p></div>
+    <div class="col-7"><audio #audioplayer controls="true"></audio></div>
+</div>
+
+
+<hr>
+
+<div>
+    <h4>
+        <input type="text" placeholder="Your Name" [(ngModel)]="dynamicInput" /> 
+        <button class="btn btn-primary" (click)="loadDynamicApiData()">Test Dynamic Content API</button>
+    </h4>
+    <div style="margin: 5px 5px 5px 0px; border: 1px solid grey; padding: 10px;">
+        <div *ngIf="dynamicIsLoading" style="text-align: center;"><img src="assets/img/loading-boxes-yellow.gif" height="80px"><p>Fetching API data...</p></div>
+        <div *ngIf="!dynamicIsLoading" [innerHtml]="dynamicContent"></div>
+    </div>
+</div>
+
+<hr>
+
+<div style="margin-top: 30px;">
+    <h4><button class="btn btn-success" (click)="loadStaticApiData()">Test Static Page Content API</button></h4>
+    
+    <!-- lazy iframe method, just put the src directly in the html so i dont have to go through and do DomSanitization because i set it in angular -->
+    <p style="font-size:10px; text-decoration: underline;">Lazy iFrame method just to show the api works</p>
+    <div *ngIf="showIframe">
+        <iframe width="900" height="700" src="https://fay6yt2x63.execute-api.us-east-1.amazonaws.com/Prod"></iframe>
+    </div>
+
+    <!-- actual API return data method, doesnt look good because its return an entire page, whose html content messes with the existing page -->
+    <p style="font-size:10px; text-decoration: underline;">Return Data Method: Angular API call behind the scenes but the return data is poorly formatted for an api response, but it works!</p>
+    <div style="margin: 5px 5px 5px 0px; border: 1px solid grey; padding: 10px;" [innerHtml]="staticContent"></div>
+    
+
+</div>
+
+<hr>
+
+<div style="margin-top: 25px;">
+    <h4>Local Debug Notes:</h4>
+    <ul>
+        <li>Might need to install the Chrome CORS extension for local testing until we can get everything tightly coupled on AWS servers</li>
+    </ul>
+</div>

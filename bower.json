@@ -1,0 +1,19 @@
+{
+  "name": "musicoin-cointek",
+  "version": "1.0.0",
+  "authors": [
+    "CryptoPete <thecryptopete@gmail.com>"
+  ],
+  "description": "Bower dependencies for Cointek",
+  "main": "gulpfile.babel.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "sweetalert2": "6.6.2"
+  },
+  "private": true
+}
